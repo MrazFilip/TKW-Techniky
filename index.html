@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taekwondo - Techniky</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyA_09DH32QnLy9_9cWqJbRSPPFXabra6ek",
+        authDomain: "tkw-techniky.firebaseapp.com",
+        projectId: "tkw-techniky",
+        storageBucket: "tkw-techniky.appspot.com",
+        messagingSenderId: "780413390528",
+        appId: "1:780413390528:web:fcda99e69554c4b21be725",
+        measurementId: "G-MDK33SEWMW"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
+<body>
+    <header>
+        <div class="header-text">
+            <h3>Taekwondo WT - Techniky</h3>
+        </div>
+        <div class="header-search">
+            <fieldset>
+                <label for="search">
+                    <span class="material-symbols-outlined">search</span>
+                    <input id="search" type="text">
+                </label>
+            </fieldset>
+        </div>
+    </header>
+    <main id="content">
+    </main>
+    <footer>
+        <p>© Mráz Filip
+            <script type="text/javascript">
+            var d = new Date();
+            document.write(d.getFullYear());
+            </script>
+        </p>
+    </footer>
+</body>
+<script src="script.js"></script>
+</html>
