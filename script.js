@@ -73,7 +73,7 @@ allTechniques.categories.forEach(category => {
         h.innerText = category["category:"];
         catList.appendChild(h);
 
-        let path = "Techniky-obrazky/" + category["category:"] + "/";
+        let path = "https://tkw-techniky-4d426.web.app/Techniky-obrazky/" + category["category:"] + "/";
 
         category["technique-names"].forEach(technique => {
             let card = document.createElement("div");
