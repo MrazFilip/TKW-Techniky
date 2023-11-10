@@ -3,7 +3,7 @@ const search = document.getElementById('search');
 const allTechniques = {
     "categories": [
         {
-            "category:": "Bloky-Makki",
+            "category:": "Bloky - Makki",
             "technique-names": [
                 { "name": "Arae Kodureo Makki" },
                 { "name": "Arae Makki" },
