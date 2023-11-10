@@ -1,8 +1,9 @@
 const content = document.getElementById('content');
+const search = document.getElementById('search');
 const allTechniques = {
     "categories": [
         {
-            "category:": "Bloky - Makki",
+            "category:": "Bloky-Makki",
             "technique-names": [
                 { "name": "Arae Kodureo Makki" },
                 { "name": "Arae Makki" },
@@ -64,20 +65,24 @@ const allTechniques = {
         }
     ]
 }
+let filteredTechniques = [];
 
-allTechniques.categories.forEach(category => {
+function generateAllTechniques() {
+    allTechniques.categories.forEach(category => {
         let catList = document.createElement("div");
+        catList.id = category["category:"];
         catList.classList.add("category");
 
         let h = document.createElement("h3");
         h.innerText = category["category:"];
         catList.appendChild(h);
 
-        let path = "https://tkw-techniky-4d426.web.app/Techniky-obrazky/" + category["category:"] + "/";
+        let path = "Techniky-obrazky/" + category["category:"] + "/";
 
         category["technique-names"].forEach(technique => {
             let card = document.createElement("div");
             card.classList.add("card");
+            card.id = technique.name;
 
             let img = document.createElement("img");
             img.src = path + technique.name + ".jpg"
@@ -100,5 +105,46 @@ allTechniques.categories.forEach(category => {
         });
 
         content.appendChild(catList);
+    })
+}
+
+search.addEventListener('input', function (event) {
+    filteredTechniques = [];
+    allTechniques.categories.forEach(category => {
+        document.getElementById(category["category:"]).classList.remove("hidden");
+        category["technique-names"].forEach(technique => {
+            document.getElementById(technique.name).classList.remove("hidden");
+        });
+    })
+    let keyWord = search.value;
+
+    allTechniques.categories.forEach(category => {
+      category["technique-names"].forEach(technique => {
+          if(technique.name.toUpperCase().match(keyWord.toUpperCase())) {
+            filteredTechniques.push(technique.name);
+          }
+      });
+    });
+
+    for (let i = filteredTechniques.length; i > 0; i--) {
+        allTechniques.categories.forEach(category => {
+            let catLenght = category["technique-names"].length;
+            let removed = 0;
+            category["technique-names"].forEach(technique => {
+                let ok = false;
+                for (j = 0; j < filteredTechniques.length; j++) {
+                    if (technique.name === filteredTechniques[j]) {
+                        ok = true;
+                    }
+                }
+                if(ok === false) {
+                    document.getElementById(technique.name).classList.add("hidden");
+                    removed++;
+                }
+            });
+            if(removed === catLenght) {
+                document.getElementById(category["category:"]).classList.add("hidden");
+            }
+        })
     }
-)
+});
