@@ -1,24 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
-
 /*
-@media (prefers-color-scheme: light) {
-    :root {
-
-        --text: #252525;
-        --background: #F9F7F7;
-        --accent: #252525;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text: #F9F7F7;
-        --background: #252525;
-        --accent: #F9F7F7;
-    }
-}*/
-
-
 :root {
     --text: #252525;
     --background: #F9F7F7;
@@ -30,6 +11,7 @@ html[data-theme="dark"] {
     --background: #252525;
     --accent: #9A9A9A;
 }
+*/
 
 :root {
     --border-width: 3px;
@@ -68,10 +50,6 @@ body {
 
     position: relative;
     min-height: 100vh;
-}
-
-html[data-theme="dark"] body {
-    background-image: url("taekwondo-bg-dark.png");
 }
 
 h1, h2, h3, h4, h5 {
@@ -281,5 +259,25 @@ footer p {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --text: #252525;
+        --background: #F9F7F7;
+        --accent: #1A1A1A;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #F9F7F7;
+        --background: #252525;
+        --accent: #9A9A9A;
+    }
+
+    body {
+        background-image: url("taekwondo-bg-dark.png");
     }
 }
