@@ -1,27 +1,87 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
 
+/*
+@media (prefers-color-scheme: light) {
+    :root {
+
+        --text: #252525;
+        --background: #F9F7F7;
+        --accent: #252525;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #F9F7F7;
+        --background: #252525;
+        --accent: #F9F7F7;
+    }
+}*/
+
+
 :root {
-    --text: #ffc06e;
+    --text: #252525;
+    --background: #F9F7F7;
+    --accent: #1A1A1A;
+}
+
+html[data-theme="dark"] {
+    --text: #F9F7F7;
     --background: #252525;
-    --primary: #d8d8d8;
-    --secondary: #ffffff;
-    --accent: #ff7c00;
+    --accent: #9A9A9A;
+}
+
+:root {
+    --border-width: 3px;
+    --transition-lenght: 100ms;
+
+    --primary: #a90f0f;
+    --secondary: #a90f0f;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.blue {
+    color: var(--primary);
+}
+
+.red {
+    color: var(--secondary);
+}
+
+.korean {
+    font-family: 'Noto Serif KR', serif;
 }
 
 body {
     font-family: 'Poppins';
     font-weight: 400;
-    background: var(--background);
+
+    background-color: var(--background);
+    background-image: url("taekwondo-bg.png");
+    background-size: 90px;
+    background-repeat: repeat;
+
     color: var(--text);
-    overflow-x: hidden;
-    width: 100vw;
-    min-height: 100vh;
+
     position: relative;
+    min-height: 100vh;
+}
+
+html[data-theme="dark"] body {
+    background-image: url("taekwondo-bg-dark.png");
 }
 
 h1, h2, h3, h4, h5 {
     font-family: 'Poppins';
     font-weight: 700;
+}
+
+p {
+    text-align: justify;
+    opacity: 0.8;
 }
 
 html {font-size: 100%;} /* 16px */
@@ -44,19 +104,26 @@ small {font-size: 0.750rem; /* 12px */}
 }
 
 header {
+    z-index: 10;
+
     padding: 0.5rem 2rem;
-    border-bottom: 2px solid var(--primary);
+
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+
     position: sticky;
     inset: 0;
+
     background: var(--background);
+    border-bottom: var(--border-width) solid var(--accent);
+    box-shadow: 0 0.5rem 1rem -0.6rem var(--accent);
+    border-radius: 0.5rem;
 }
 
 header .header-text {
-    text-align: start;
     display: flex;
+    text-align: start;
     align-items: center;
 }
 
@@ -67,9 +134,12 @@ header .header-search {
 }
 
 header .header-search fieldset {
+    border: var(--border-width) solid var(--accent);
     border-radius: 0.5rem;
     font-size: 1.777rem;
     padding: 0.5rem;
+
+    transition: var(--transition-lenght) linear;
 }
 
 header .header-search fieldset label {
@@ -81,10 +151,24 @@ header .header-search fieldset label {
 
 header .header-search fieldset label span {
     font-size: 1.777rem;
+
+    transition: var(--transition-lenght) linear;
 }
 
 header .header-search input[type="text"] {
     all: unset;
+}
+
+header .header-search fieldset:has(input[type="text"]:focus),
+header .header-search fieldset:has(input[type="text"]:active),
+header .header-search fieldset:has(input[type="text"]:hover) {
+    border-color: var(--primary);
+}
+
+header .header-search fieldset:has(input[type="text"]:focus) label span,
+header .header-search fieldset:has(input[type="text"]:active) label span,
+header .header-search fieldset:has(input[type="text"]:hover) label span {
+    color: var(--secondary);
 }
 
 main {
@@ -92,6 +176,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
     margin: 0 auto;
 }
 
@@ -100,33 +185,53 @@ main h3 {
     text-align: center;
 }
 
+main .line {
+    height: 0.25rem;
+    width: 66%;
+    border-radius: 0.25rem;
+    background: var(--primary);
+}
+
+main section {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 main .category {
     width: 100%;
     padding: 2rem 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
+
     text-align: start;
 }
 
 main .card {
-    width: 500px;
-    height: 800px;
+    max-width: 600px;
+    height: 100%;
+
     border-radius: 1rem;
-    border: 2px solid var(--primary);
+    border: var(--border-width) solid var(--accent);
+    background: var(--background);
+
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
-    flex-direction: column;
     gap: 0.5rem;
+
     padding: 1rem;
+
+    box-shadow: 0 0.5rem 1rem -0.8rem var(--accent);
 }
 
 main .card .img-wrapper {
-    width: 100%;
-    height: 100%;
+    flex: 1;
     display: flex;
     align-items:center;
     justify-content: center;
@@ -135,20 +240,35 @@ main .card .img-wrapper {
 main .card .img-wrapper img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;
+
     border-radius: 0.75rem;
+
+    box-shadow: 0 0.5rem 1rem -0.8rem var(--accent);
 }
 
 main .card .text-wrapper {
-    align-items: start;
-    justify-content: start;
+    flex: 1;
+    text-align: justify-all;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 footer {
     position: absolute;
+
     bottom: 0;
     width: 100%;
-    border-top: 2px solid var(--primary);
+
+    background: var(--background);
+    border-top: var(--border-width) solid var(--accent);
+}
+
+footer p {
+    opacity: 1;
+    background: inherit;
     text-align: center;
 }
 

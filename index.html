@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <title>Taekwondo - Techniky</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
     <link rel="icon" href="punch-icon.png">
 </head>
 <body onload="generateAllTechniques()">
     <header>
         <div class="header-text">
-            <h3>Taekwondo WT - Techniky</h3>
+            <h3>
+                TaeKwonDo - <span class="korean red">태권도</span>
+            </h3>
         </div>
         <div class="header-search">
             <fieldset>
@@ -21,14 +24,15 @@
             </fieldset>
         </div>
     </header>
-    <main id="content">
-    </main>
+    <main id="content"></main>
     <footer>
         <p>© Mráz Filip
+            <span class="red">
             <script type="text/javascript">
-            var d = new Date();
+            let d = new Date();
             document.write(d.getFullYear());
             </script>
+            </span>
         </p>
     </footer>
 </body>
