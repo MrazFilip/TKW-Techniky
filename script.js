@@ -1,5 +1,8 @@
 const content = document.getElementById('content');
 const search = document.getElementById('search');
+const theme = window.matchMedia("(prefers-color-scheme: dark)");
+const scrollBar = document.getElementById("text-ball-wrapper");
+const scrollText = document.getElementById("scroll-text");
 const allTechniques = {
     "categories": [
         {
@@ -189,8 +192,58 @@ const allTechniques = {
         }
     ]
 }
-let filteredTechniques = [];
 
+/* MODE CHECKER */
+
+let mode = 'light';
+window.addEventListener("load", (event)  => {
+    if(theme.matches) {
+        mode = 'dark';
+        document.getElementsByTagName("html")[0].setAttribute("data-theme", "dark");
+    } else {
+        mode = 'light';
+        document.getElementsByTagName("html")[0].setAttribute("data-theme", "light");
+    }
+});
+
+/* SCROLL UPADTER */
+
+const
+    h = document.documentElement,
+    b = document.body,
+    st = 'scrollTop',
+    sh = 'scrollHeight';
+window.addEventListener("scroll", (event) => {
+    scrollBar.style.top = "calc(" + (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100 + "% - 15px)";
+    let text = "";
+    allTechniques.categories.forEach(category => {
+       if(isElementBarelyInViewport(document.getElementById(category["category:"]))) {
+           text = category["category:"].toUpperCase();
+       }
+    });
+
+    scrollText.innerText = text;
+});
+
+function isElementBarelyInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+    const windowWidth = (window.innerWidth || document.documentElement.clientWidth);
+
+    const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
+    const horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
+
+    const topVisible = rect.top >= 0 && rect.top < windowHeight;
+    const bottomVisible = rect.bottom > 0 && rect.bottom <= windowHeight;
+    const leftVisible = rect.left >= 0 && rect.left < windowWidth;
+    const rightVisible = rect.right > 0 && rect.right <= windowWidth;
+
+    return (vertInView && horInView) && (topVisible || bottomVisible || leftVisible || rightVisible);
+}
+
+/* TECHNIQUE HTML GENERATION */
+
+let filteredTechniques = [];
 function generateAllTechniques() {
     allTechniques.categories.forEach(category => {
         let catList = document.createElement("div");
@@ -253,6 +306,8 @@ function generateAllTechniques() {
         content.appendChild(catList);
     })
 }
+
+/* SEARCH TECHNIQUE FILTERING */
 
 search.addEventListener('input', function (event) {
     filteredTechniques = [];

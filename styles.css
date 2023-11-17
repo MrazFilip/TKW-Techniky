@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
-/*
+
 :root {
     --text: #252525;
     --background: #F9F7F7;
@@ -11,7 +11,6 @@ html[data-theme="dark"] {
     --background: #252525;
     --accent: #9A9A9A;
 }
-*/
 
 :root {
     --border-width: 3px;
@@ -50,6 +49,48 @@ body {
 
     position: relative;
     min-height: 100vh;
+}
+
+html[data-theme="dark"] body {
+    background-image: url("taekwondo-bg-dark.png");
+}
+
+.scroll-wrapper {
+    width: 3px;
+    height: 60vh;
+
+    position: fixed;
+
+    right: 1.5rem;
+    top: 20vh;
+}
+
+.scroll-bar {
+    width: 100%;
+    height: 100%;
+
+    background: var(--primary);
+}
+
+#text-ball-wrapper {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 0.5rem;
+
+    width: 250px;
+
+    position: absolute;
+    right: -6px;
+    top: calc(0% - 15px);
+}
+
+#text-ball-wrapper .scroll-ball {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+
+    background: var(--primary);
 }
 
 h1, h2, h3, h4, h5 {
@@ -94,9 +135,7 @@ header {
     inset: 0;
 
     background: var(--background);
-    border-bottom: var(--border-width) solid var(--accent);
-    box-shadow: 0 0.5rem 1rem -0.6rem var(--accent);
-    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem 0 var(--background);
 }
 
 header .header-text {
@@ -156,6 +195,8 @@ main {
     flex-direction: column;
 
     margin: 0 auto;
+
+    max-width: 80vw;
 }
 
 main h3 {
@@ -178,6 +219,7 @@ main section {
 }
 
 main .category {
+    margin-bottom: 2rem;
     width: 100%;
     padding: 2rem 0;
 
@@ -260,8 +302,12 @@ footer p {
         align-items: center;
         justify-content: center;
     }
-}
 
+    .scroll-wrapper {
+        display: none;
+    }
+}
+/*
 @media (prefers-color-scheme: light) {
     :root {
         --text: #252525;
@@ -277,7 +323,5 @@ footer p {
         --accent: #9A9A9A;
     }
 
-    body {
-        background-image: url("taekwondo-bg-dark.png");
-    }
+
 }
