@@ -307,21 +307,4 @@ footer p {
         display: none;
     }
 }
-/*
-@media (prefers-color-scheme: light) {
-    :root {
-        --text: #252525;
-        --background: #F9F7F7;
-        --accent: #1A1A1A;
-    }
-}
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text: #F9F7F7;
-        --background: #252525;
-        --accent: #9A9A9A;
-    }
-
-
-}
